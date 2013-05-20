@@ -67,7 +67,7 @@ class Subexec
       r, w = IO.pipe
 
       log_to_file = !log_file.nil?
-      log_opts = {[:out, :err] => [log_file, 'a']}
+      log_opts = {:out => w, :err => w}
       self.pid = Process.spawn({'LANG' => self.lang}, command, log_opts)
       w.close
 
