@@ -68,7 +68,7 @@ class Subexec
 
       log_to_file = !log_file.nil?
       log_opts = {[:out, :err] => [log_file, 'a']}
-      self.pid = Process.spawn({'LANG' => self.lang}, command, :err => 'a')
+      self.pid = Process.spawn({'LANG' => self.lang}, command, log_opts)
       w.close
 
       @timer = Time.now + timeout
